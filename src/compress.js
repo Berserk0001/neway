@@ -7,7 +7,8 @@ function compress(req, res, input) {
   sharp(input)
     .grayscale(req.params.grayscale)
     .toFormat(format, {
-      quality: req.params.quality
+      quality: req.params.quality,
+      speed: 8
     })
     .toBuffer((err, output, info) => {
       if (err || !info || res.headersSent) return redirect(req, res)
